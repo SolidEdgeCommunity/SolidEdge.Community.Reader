@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{939134A8-AAD3-4AF7-B054-EB483DC7D719}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SolidEdgeContrib.Reader</RootNamespace>
+    <AssemblyName>SolidEdgeContrib.Reader</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assembly\AssemblyDocument.cs" />
+    <Compile Include="Assembly\Attachments.cs" />
+    <Compile Include="Assembly\ConfigFileExtension.cs" />
+    <Compile Include="Assembly\Configuration.cs" />
+    <Compile Include="Assembly\Constants.cs" />
+    <Compile Include="Assembly\FamilyOfAssembliesDocument.cs" />
+    <Compile Include="Assembly\SynchronousAssemblyDocument.cs" />
+    <Compile Include="Assembly\Zone.cs" />
+    <Compile Include="Attributes.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Draft\Attributes.cs" />
+    <Compile Include="Draft\Constants.cs" />
+    <Compile Include="Draft\DraftDocument.cs" />
+    <Compile Include="Draft\MethodExtensions.cs" />
+    <Compile Include="Draft\Sheet.cs" />
+    <Compile Include="Draft\Structures.cs" />
+    <Compile Include="InsightConnect\MarkupDocument.cs" />
+    <Compile Include="MethodExtensions.cs" />
+    <Compile Include="Native\Attributes.cs" />
+    <Compile Include="Native\CompoundFile.cs" />
+    <Compile Include="Native\Constants.cs" />
+    <Compile Include="Native\Helpers.cs" />
+    <Compile Include="Native\Interfaces.cs" />
+    <Compile Include="Native\MethodExtensions.cs" />
+    <Compile Include="Native\NativeMethods.cs" />
+    <Compile Include="Native\Property.cs" />
+    <Compile Include="Native\PropertySet.cs" />
+    <Compile Include="Native\PropertySets.cs" />
+    <Compile Include="Native\ReadOnlyILockBytes.cs" />
+    <Compile Include="Native\Structures.cs" />
+    <Compile Include="Part\PartDocument.cs" />
+    <Compile Include="Part\SheetMetalDocument.cs" />
+    <Compile Include="Part\SynchronousPartDocument.cs" />
+    <Compile Include="Part\SynchronousSheetMetalDocument.cs" />
+    <Compile Include="Part\WeldmentDocument.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertySets.cs" />
+    <Compile Include="SolidEdgeDocument.cs" />
+    <Compile Include="Structures.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets" Condition="Exists('..\..\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
+    <ItemGroup>
+      <InputAssemblies Include="$(OutputPath)\SolidEdgeContrib.Reader.dll" />
+      <InputAssemblies Include="$(OutputPath)\ICSharpCode.SharpZipLib.dll" />
+    </ItemGroup>
+    <ItemGroup>
+      <!-- Must be a fully qualified name -->
+      <!-- <DoNotInternalizeAssemblies Include="ExampleAssemblyToMerge3" /> -->
+    </ItemGroup>
+    <ILRepack Parallel="true" Internalize="false" InternalizeExclude="@(DoNotInternalizeAssemblies)" InputAssemblies="@(InputAssemblies)" TargetKind="Dll" XmlDocumentation="true" OutputFile="$(OutputPath)\$(AssemblyName).dll" />
+  </Target>
+</Project>

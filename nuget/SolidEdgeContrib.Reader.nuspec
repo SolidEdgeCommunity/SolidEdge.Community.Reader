@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>SolidEdgeContrib.Reader</id>
+        <version>1.0.0</version>
+        <title>Solid Edge Community Contributions - File Reader</title>
+        <authors>Jason Newell</authors>
+        <owners>SolidEdgeContrib</owners>
+        <licenseUrl>https://github.com/SolidEdgeContrib/SolidEdgeContrib.Reader/blob/master/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/SolidEdgeContrib.Reader</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Library for reading Solid Edge files</description>
+        <summary>Library for reading Solid Edge files</summary>
+        <releaseNotes>This is the initial public release.</releaseNotes>
+        <language>en-US</language>
+        <tags>interop solidedge community contrib reader</tags>
+    </metadata>
+</package>
