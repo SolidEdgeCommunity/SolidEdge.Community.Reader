@@ -6,8 +6,8 @@
         <title>Solid Edge Community Contributions - File Reader</title>
         <authors>Jason Newell</authors>
         <owners>SolidEdgeContrib</owners>
-        <licenseUrl>https://github.com/SolidEdgeContrib/SolidEdgeContrib.Reader/blob/master/LICENSE.md</licenseUrl>
-        <projectUrl>https://github.com/SolidEdgeContrib.Reader</projectUrl>
+        <licenseUrl>https://github.com/SolidEdgeCommunity/SolidEdgeContrib.Reader/blob/master/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/SolidEdgeCommunity/SolidEdgeContrib.Reader</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Library for reading Solid Edge files</description>
         <summary>Library for reading Solid Edge files</summary>
