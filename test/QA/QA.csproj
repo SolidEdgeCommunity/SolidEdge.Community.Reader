@@ -50,16 +50,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SolidEdgeContrib.Reader\SolidEdgeContrib.Reader.csproj">
-      <Project>{939134a8-aad3-4af7-b054-eb483dc7d719}</Project>
-      <Name>SolidEdgeContrib.Reader</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SolidEdge.Community.Reader\SolidEdge.Community.Reader.csproj">
+      <Project>{939134a8-aad3-4af7-b054-eb483dc7d719}</Project>
+      <Name>SolidEdge.Community.Reader</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
