@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SolidEdge.Community.Reader.Native
+namespace SolidEdgeCommunity.Reader.Native
 {
     public class PropertySets : IList<PropertySet>, ICollection<PropertySet>
     {

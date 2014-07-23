@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace SolidEdge.Community.Reader
+namespace SolidEdgeCommunity.Reader
 {
     /// <summary>
     /// Class IDs

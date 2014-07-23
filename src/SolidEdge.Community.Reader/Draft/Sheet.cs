@@ -1,4 +1,4 @@
-﻿using SolidEdge.Community.Reader.Native;
+﻿using SolidEdgeCommunity.Reader.Native;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace SolidEdge.Community.Reader.Draft
+namespace SolidEdgeCommunity.Reader.Draft
 {
     public sealed class Sheet
     {

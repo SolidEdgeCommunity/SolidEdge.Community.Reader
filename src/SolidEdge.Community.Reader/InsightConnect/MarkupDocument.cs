@@ -1,7 +1,7 @@
-﻿using SolidEdge.Community.Reader.Native;
+﻿using SolidEdgeCommunity.Reader.Native;
 using System;
 
-namespace SolidEdge.Community.Reader.InsightConnect
+namespace SolidEdgeCommunity.Reader.InsightConnect
 {
     /// <summary>
     /// Insight Connect Markup Document (.pcf)

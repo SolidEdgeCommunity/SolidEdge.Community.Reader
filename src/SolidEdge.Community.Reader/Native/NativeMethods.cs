@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 
-namespace SolidEdge.Community.Reader.Native
+namespace SolidEdgeCommunity.Reader.Native
 {
     internal static class NativeMethods
     {

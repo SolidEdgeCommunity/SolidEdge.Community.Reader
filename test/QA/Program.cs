@@ -1,10 +1,10 @@
 ﻿using log4net;
-using SolidEdge.Community.Reader;
-using SolidEdge.Community.Reader.Assembly;
-using SolidEdge.Community.Reader.Draft;
-using SolidEdge.Community.Reader.InsightConnect;
-using SolidEdge.Community.Reader.Native;
-using SolidEdge.Community.Reader.Part;
+using SolidEdgeCommunity.Reader;
+using SolidEdgeCommunity.Reader.Assembly;
+using SolidEdgeCommunity.Reader.Draft;
+using SolidEdgeCommunity.Reader.InsightConnect;
+using SolidEdgeCommunity.Reader.Native;
+using SolidEdgeCommunity.Reader.Part;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -157,7 +157,7 @@ namespace QA
 
         static void TestDocument(ConfigFileExtension document)
         {
-            foreach (SolidEdge.Community.Reader.Assembly.Configuration config in document.Configurations)
+            foreach (SolidEdgeCommunity.Reader.Assembly.Configuration config in document.Configurations)
             {
                 string configName = config.Name;
             }

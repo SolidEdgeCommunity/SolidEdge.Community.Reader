@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SolidEdge.Community.Reader.Assembly
+namespace SolidEdgeCommunity.Reader.Assembly
 {
     public class Configuration
     {

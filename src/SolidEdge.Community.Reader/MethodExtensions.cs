@@ -1,4 +1,4 @@
-﻿using SolidEdge.Community.Reader.Native;
+﻿using SolidEdgeCommunity.Reader.Native;
 //using SolidEdge.Community.Reader.Native.zlib.Zip.Compression.Streams;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SolidEdge.Community.Reader
+namespace SolidEdgeCommunity.Reader
 {
     internal static class MethodExtensions
     {

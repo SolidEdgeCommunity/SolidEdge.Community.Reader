@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SolidEdge.Community.Reader
+namespace SolidEdgeCommunity.Reader
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct BUILDVERSIONS

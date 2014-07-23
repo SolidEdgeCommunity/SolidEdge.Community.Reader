@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
-namespace SolidEdge.Community.Reader.Native
+namespace SolidEdgeCommunity.Reader.Native
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct RGBQUAD

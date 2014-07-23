@@ -1,10 +1,10 @@
-﻿using SolidEdge.Community.Reader.Native;
+﻿using SolidEdgeCommunity.Reader.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SolidEdge.Community.Reader
+namespace SolidEdgeCommunity.Reader
 {
     public class SolidEdgePropertySet : PropertySet
     {

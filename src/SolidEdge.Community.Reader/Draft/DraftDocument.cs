@@ -1,12 +1,12 @@
 ﻿//using SolidEdge.Community.Reader.Native.zlib.Zip.Compression.Streams;
-using SolidEdge.Community.Reader.Native;
+using SolidEdgeCommunity.Reader.Native;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SolidEdge.Community.Reader.Draft
+namespace SolidEdgeCommunity.Reader.Draft
 {
     /// <summary>
     /// Solid Edge Draft Document (.dft)

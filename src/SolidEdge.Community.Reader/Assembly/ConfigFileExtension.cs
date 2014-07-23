@@ -1,8 +1,8 @@
-﻿using SolidEdge.Community.Reader.Native;
+﻿using SolidEdgeCommunity.Reader.Native;
 using System;
 using System.Collections.Generic;
 
-namespace SolidEdge.Community.Reader.Assembly
+namespace SolidEdgeCommunity.Reader.Assembly
 {
     [SolidEdgeDocumentAttribute(DocumentType.ConfigFileExtension, CLSID.ConfigFileExtension, PROGID.ConfigFileExtension, "Solid Edge Assembly Configuration File", ".cfg")]
     public sealed class ConfigFileExtension : SolidEdgeDocument

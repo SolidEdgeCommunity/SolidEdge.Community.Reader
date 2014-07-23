@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SolidEdge.Community.Reader
+namespace SolidEdgeCommunity.Reader
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     internal sealed class SolidEdgeDocumentAttribute : Attribute

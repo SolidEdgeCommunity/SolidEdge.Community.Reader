@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace SolidEdge.Community.Reader.Draft
+namespace SolidEdgeCommunity.Reader.Draft
 {
     internal static class MethodExtensions
     {

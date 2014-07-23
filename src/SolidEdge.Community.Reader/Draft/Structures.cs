@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace SolidEdge.Community.Reader.Draft
+namespace SolidEdgeCommunity.Reader.Draft
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct DRAFTDOCUMENTINFO

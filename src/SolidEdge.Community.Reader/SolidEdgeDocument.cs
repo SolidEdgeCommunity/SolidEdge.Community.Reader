@@ -1,7 +1,7 @@
-﻿using SolidEdge.Community.Reader.Assembly;
-using SolidEdge.Community.Reader.Draft;
-using SolidEdge.Community.Reader.Native;
-using SolidEdge.Community.Reader.Part;
+﻿using SolidEdgeCommunity.Reader.Assembly;
+using SolidEdgeCommunity.Reader.Draft;
+using SolidEdgeCommunity.Reader.Native;
+using SolidEdgeCommunity.Reader.Part;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
-namespace SolidEdge.Community.Reader
+namespace SolidEdgeCommunity.Reader
 {
     public abstract partial class SolidEdgeDocument : CompoundFile
     {

@@ -1,7 +1,7 @@
-﻿using SolidEdge.Community.Reader.Native;
+﻿using SolidEdgeCommunity.Reader.Native;
 using System;
 
-namespace SolidEdge.Community.Reader.Assembly
+namespace SolidEdgeCommunity.Reader.Assembly
 {
     /// <summary>
     /// Solid Edge Family of Assemblies Document (.asm)

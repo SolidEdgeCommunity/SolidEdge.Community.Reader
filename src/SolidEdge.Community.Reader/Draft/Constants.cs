@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SolidEdge.Community.Reader.Draft
+namespace SolidEdgeCommunity.Reader.Draft
 {
     internal static class StorageName
     {
