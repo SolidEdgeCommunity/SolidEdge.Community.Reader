@@ -1,4 +1,4 @@
-﻿using SolidEdgeCommunity.Reader.Assembly;
+using SolidEdgeCommunity.Reader.Assembly;
 using SolidEdgeCommunity.Reader.Draft;
 using SolidEdgeCommunity.Reader.Native;
 using SolidEdgeCommunity.Reader.Part;
@@ -139,80 +139,50 @@ namespace SolidEdgeCommunity.Reader
         }
 
         // Getting inconsistent results. Need to work on code.
-        //public Bitmap GetThumbnail()
-        //{
-        //    Bitmap bitmap = null;
+        public Bitmap GetThumbnail()
+        {
+            Bitmap bitmap = null;
+            PROPVARIANT propvar = default(PROPVARIANT);
 
-        //    PROPVARIANT propvar = default(PROPVARIANT);
+            try
+            {
+                Marshal.ThrowExceptionForHR(GetPropertyValue(FMTID.FMTID_ExtendedSummaryInformation, (uint)ExtendedSummaryInformationConstants.LARGE_DIB, out propvar));
 
-        //    try
-        //    {
-        //        Marshal.ThrowExceptionForHR(GetPropertyValue(FMTID.FMTID_ExtendedSummaryInformation, (uint)ExtendedSummaryInformationConstants.LARGE_DIB, out propvar));
+                if (propvar.Type == VarEnum.VT_CF)
+                {
+                    // Get CLIPDATA.
+                    CLIPDATA clipdata = propvar.GetCLIPDATA();
 
-        //        if (propvar.Type == VarEnum.VT_CF)
-        //        {
-        //            // Get CLIPDATA.
-        //            CLIPDATA clipdata = propvar.GetCLIPDATA();
+                    // built-in Windows format
+                    if (clipdata.ulClipFmt == -1)
+                    {
+                        // Pointer to BITMAPINFOHEADER.
+                        IntPtr pBIH = clipdata.pClipData;
+                        bitmap = DibToBitmap.Convert(pBIH);
+                    }
+                    else
+                    {
+                        Console.WriteLine("CLIP FORMAT ERROR");
+                        Marshal.ThrowExceptionForHR(HRESULT.DV_E_CLIPFORMAT);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("INVALID VARIANT ERROR");
+                    Marshal.ThrowExceptionForHR(HRESULT.ERROR_INVALID_VARIANT);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                propvar.Clear();
+            }
 
-        //            // built-in Windows format
-        //            if (clipdata.ulClipFmt == -1)
-        //            {
-        //                // Pointer to BITMAPINFOHEADER.
-        //                IntPtr pBIH = clipdata.pClipData;
-
-        //                // Get BITMAPINFOHEADER.
-        //                BITMAPINFOHEADER bmi = pBIH.ToStructure<BITMAPINFOHEADER>();
-
-        //                // Calculate colors.
-        //                int nColors = (int)bmi.biClrUsed;
-        //                if ((nColors == 0) && (bmi.biBitCount <= 8))
-        //                {
-        //                    nColors = 1 << bmi.biBitCount;
-        //                }
-
-        //                // Calculate size.
-        //                int size = Marshal.SizeOf(typeof(BITMAPINFOHEADER)) + (nColors * Marshal.SizeOf(typeof(RGBQUAD)));
-
-        //                // Calculate pointer to bitmap bits.
-        //                IntPtr pBits = IntPtr.Add(pBIH, size);
-        //                IntPtr pBmp = IntPtr.Zero;
-
-        //                // Hack way to get GdiplusStartup() called.
-        //                bitmap = new Bitmap(1, 1);
-        //                bitmap.Dispose();
-        //                bitmap = null;
-
-        //                Marshal.ThrowExceptionForHR(NativeMethods.GdipCreateBitmapFromGdiDib(pBIH, pBits, out pBmp));
-
-        //                bitmap = (Bitmap)typeof(System.Drawing.Bitmap).InvokeMember(
-        //                   "FromGDIplus",
-        //                   BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.InvokeMethod,
-        //                   null,
-        //                   null,
-        //                   new object[] { pBmp });
-                        
-        //            }
-        //            else
-        //            {
-        //                Marshal.ThrowExceptionForHR(HRESULT.DV_E_CLIPFORMAT);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            Marshal.ThrowExceptionForHR(HRESULT.ERROR_INVALID_VARIANT);
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        propvar.Clear();
-        //    }
-
-        //    return bitmap;
-        //}
+            return bitmap;
+        }
 
         public new static SolidEdgeDocument Open(string path)
         {
