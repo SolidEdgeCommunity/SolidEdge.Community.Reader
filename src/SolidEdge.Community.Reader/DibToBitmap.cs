@@ -11,7 +11,7 @@ using System.Drawing.Imaging;
 
 namespace SolidEdgeCommunity.Reader
 {
-    public class DibToBitmap
+    class DibToBitmap
     {
 
         /// <summary>

@@ -30,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Release\SolidEdge.Community.Reader.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
@@ -55,6 +56,7 @@
     <Compile Include="Assembly\Zone.cs" />
     <Compile Include="Attributes.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DibToBitmap.cs" />
     <Compile Include="Draft\Attributes.cs" />
     <Compile Include="Draft\Constants.cs" />
     <Compile Include="Draft\DraftDocument.cs" />
