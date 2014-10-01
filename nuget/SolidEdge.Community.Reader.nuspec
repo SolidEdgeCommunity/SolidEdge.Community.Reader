@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>SolidEdge.Community.Reader</id>
+        <version>1.4.0</version>
+        <title>SolidEdge.Community.Reader</title>
+        <authors>Jason Newell</authors>
+        <owners>Jason Newell</owners>
+        <licenseUrl>https://github.com/SolidEdgeCommunity/SolidEdge.Community.Reader/blob/master/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/SolidEdgeCommunity/SolidEdge.Community.Reader</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Community provided assembly for reading Solid Edge files.</description>
+        <summary>Community provided assembly for reading Solid Edge files.</summary>
+        <releaseNotes>GetThumbnail() x64 fix. Internalized embedded ICSharpCode.SharpZipLib classes.</releaseNotes>
+        <language>en-US</language>
+        <tags>interop solidedge community contrib reader</tags>
+    </metadata>
+</package>

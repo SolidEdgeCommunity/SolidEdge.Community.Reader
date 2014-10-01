@@ -13,7 +13,6 @@ namespace SolidEdgeCommunity.Reader
 {
     class DibToBitmap
     {
-
         /// <summary>
         /// Convert DIB to Bitmap.
         /// </summary>
@@ -72,8 +71,11 @@ namespace SolidEdgeCommunity.Reader
                 p = 1 << bmi.biBitCount;
             }
 
-            pix = (IntPtr)((p * 4) + bmi.biSize + (int)bmpptr);
+            // Old code - bmpptr is too big on x64 (64290270928 in my example) to cast as an int!
+            //pix = (IntPtr)((p * 4) + bmi.biSize + (int)bmpptr);
 
+            // Corrected code to handle large bmpptr pointer.
+            pix = IntPtr.Add(bmpptr, (p * 4) + bmi.biSize);
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 2)]

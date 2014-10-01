@@ -28,46 +28,56 @@ namespace QA
 
         static void Main(string[] args)
         {
-            TimeSpan elapsedTime = new TimeSpan();
+            var filename = @"C:\Users\jason_001\Desktop\Part1.par";
 
-            DirectoryInfo rootFolder = new DirectoryInfo(ConfigurationManager.AppSettings["RootFolder"]);
-            string[] fileExtensions = ConfigurationManager.AppSettings["FileExtensions"].Split(',');
-            _testProperties = bool.Parse(ConfigurationManager.AppSettings["TestProperties"]);
-            _extractEMFs = bool.Parse(ConfigurationManager.AppSettings["ExtractEMFs"]);
-            _extractThumbnails = bool.Parse(ConfigurationManager.AppSettings["ExtractThumbnails"]);
-            _maxFiles = int.Parse(ConfigurationManager.AppSettings["MaxFiles"]);
-
-            log.InfoFormat("Scanning '{0}' for files.", rootFolder.FullName);
-
-            int count = 0;
-
-            foreach (string fileExtension in fileExtensions)
+            var document = SolidEdgeCommunity.Reader.SolidEdgeDocument.Open(filename);
+            using (var bitmap = document.GetThumbnail())
             {
-                foreach (FileInfo file in rootFolder.EnumerateFiles("*" + fileExtension, SearchOption.AllDirectories))
-                {
-                    count++;
-
-                    if (count >= _maxFiles)
-                    {
-                        break;
-                    }
-
-                    string relativePath = file.FullName.Substring(rootFolder.FullName.Length);
-                    log.Info(relativePath);
-
-                    try
-                    {
-                        TimeSpan t1 = TestDocument(file.FullName);
-                        log.InfoFormat("t1: {0}", t1.ToString());
-                        log.Info(String.Empty);
-                        elapsedTime = elapsedTime.Add(t1);
-                    }
-                    catch (System.Exception ex)
-                    {
-                        log.Error(ex.Message, ex);
-                    }
-                }
+                filename = System.IO.Path.ChangeExtension(filename, "_(SolidEdgeCommunity).bmp");
+                bitmap.Save(filename, System.Drawing.Imaging.ImageFormat.Bmp);
             }
+            document.Close();
+
+            //TimeSpan elapsedTime = new TimeSpan();
+
+            //DirectoryInfo rootFolder = new DirectoryInfo(ConfigurationManager.AppSettings["RootFolder"]);
+            //string[] fileExtensions = ConfigurationManager.AppSettings["FileExtensions"].Split(',');
+            //_testProperties = bool.Parse(ConfigurationManager.AppSettings["TestProperties"]);
+            //_extractEMFs = bool.Parse(ConfigurationManager.AppSettings["ExtractEMFs"]);
+            //_extractThumbnails = bool.Parse(ConfigurationManager.AppSettings["ExtractThumbnails"]);
+            //_maxFiles = int.Parse(ConfigurationManager.AppSettings["MaxFiles"]);
+
+            //log.InfoFormat("Scanning '{0}' for files.", rootFolder.FullName);
+
+            //int count = 0;
+
+            //foreach (string fileExtension in fileExtensions)
+            //{
+            //    foreach (FileInfo file in rootFolder.EnumerateFiles("*" + fileExtension, SearchOption.AllDirectories))
+            //    {
+            //        count++;
+
+            //        if (count >= _maxFiles)
+            //        {
+            //            break;
+            //        }
+
+            //        string relativePath = file.FullName.Substring(rootFolder.FullName.Length);
+            //        log.Info(relativePath);
+
+            //        try
+            //        {
+            //            TimeSpan t1 = TestDocument(file.FullName);
+            //            log.InfoFormat("t1: {0}", t1.ToString());
+            //            log.Info(String.Empty);
+            //            elapsedTime = elapsedTime.Add(t1);
+            //        }
+            //        catch (System.Exception ex)
+            //        {
+            //            log.Error(ex.Message, ex);
+            //        }
+            //    }
+            //}
 
         }
 
