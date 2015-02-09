@@ -25,7 +25,7 @@ namespace SolidEdgeCommunity.Reader.Draft
             _info = info;
         }
 
-        internal int Index { get { return _index; } }
+        public int Index { get { return _index; } }
         internal string StreamName { get { return _index.ToString(); } }
         internal uint MetafileSize { get { return _info.emfSize; } }
         internal uint MetafileCompressedSize { get { return _info.emfCompressedSize; } }
@@ -101,7 +101,8 @@ namespace SolidEdgeCommunity.Reader.Draft
         /// </remarks>
         public Metafile GetMetafile()
         {
-            return new Metafile(_draftFile.GetEmfMemoryStream(this));
+            var pEmf = GetHENHMETAFILE();
+            return new Metafile(pEmf, true);
         }
 
         /// <summary>

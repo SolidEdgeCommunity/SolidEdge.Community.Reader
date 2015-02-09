@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SolidEdge.Community.Reader</id>
-        <version>1.4.0</version>
+        <version>1.5.0</version>
         <title>SolidEdge.Community.Reader</title>
         <authors>Jason Newell</authors>
         <owners>Jason Newell</owners>
@@ -11,7 +11,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Community provided assembly for reading Solid Edge files.</description>
         <summary>Community provided assembly for reading Solid Edge files.</summary>
-        <releaseNotes>GetThumbnail() x64 fix. Internalized embedded ICSharpCode.SharpZipLib classes.</releaseNotes>
+        <releaseNotes>Fixed a crash with Sheet.GetMetafile().</releaseNotes>
         <language>en-US</language>
         <tags>interop solidedge community contrib reader</tags>
     </metadata>
