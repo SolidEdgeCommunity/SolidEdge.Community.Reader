@@ -39,7 +39,16 @@ namespace SolidEdgeCommunity.Reader.Native
                 {
                     if (_rootStorage != null)
                     {
-                        _rootStorage.FinalRelease();
+
+                        if (Marshal.IsComObject(_rootStorage))
+                        {
+                            _rootStorage.FinalRelease();
+                        }
+                        else if (_rootStorage is ReadOnlyIStorage)
+                        {
+                            ((IDisposable)_rootStorage).Dispose();
+                        }
+
                         _rootStorage = null;
                     }
                 }
@@ -61,6 +70,7 @@ namespace SolidEdgeCommunity.Reader.Native
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
         public static CompoundFile Open(string path)
         {
             IStorage storage = OpenStorage(path);
@@ -68,22 +78,15 @@ namespace SolidEdgeCommunity.Reader.Native
             return new CompoundFile(storage, statstg);
         }
 
-        /// <summary>
-        /// Creates an ILockBytes object from .NET Stream (taking ownership) and calls StgOpenStorageOnILockBytes(). 
-        /// </summary>
-        /// <param name="stream"></param>
-        /// <returns></returns>
         internal static IStorage OpenStorage(Stream stream)
         {
             IStorage storage = null;
             uint grfMode = (uint)(STGM.READ | STGM.SHARE_EXCLUSIVE);
 
-            using (ReadOnlyILockBytes lockBytes = new ReadOnlyILockBytes(stream))
-            {
-                Marshal.ThrowExceptionForHR(NativeMethods.StgOpenStorageOnILockBytes(lockBytes, null, grfMode, IntPtr.Zero, 0, out storage));
-            }
+            ReadOnlyILockBytes readOnlyLockBytes = new ReadOnlyILockBytes(stream);            
+            Marshal.ThrowExceptionForHR(NativeMethods.StgOpenStorageOnILockBytes(readOnlyLockBytes, null, grfMode, IntPtr.Zero, 0, out storage));
 
-            return storage;
+            return new ReadOnlyIStorage(storage, readOnlyLockBytes);
         }
 
         internal static IStorage OpenStorage(string path)

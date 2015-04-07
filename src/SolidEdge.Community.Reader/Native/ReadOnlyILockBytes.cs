@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SolidEdgeCommunity.Reader.Native
@@ -10,106 +10,82 @@ namespace SolidEdgeCommunity.Reader.Native
     internal class ReadOnlyILockBytes : ILockBytes, IDisposable
     {
         private Stream _stream;
-        private STATSTG _statstg;
-        private bool _disposed;
 
         public ReadOnlyILockBytes(Stream stream)
         {
             _stream = stream;
-
-            _statstg = new STATSTG()
-            {
-                grfLocksSupported = 0,
-                cbSize = _stream.Length,
-                type = (int)STGTY.LOCKBYTES
-            };
-
         }
 
-        #region IDisposable
-
-        void IDisposable.Dispose()
-        {
-            Close();
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed) return;
-
-            if (disposing)
-            {
-                try
-                {
-                    if (_stream != null)
-                    {
-                        _stream.Close();
-                        _stream = null;
-                    }
-                }
-                catch
-                {
-#if DEBUG
-                    System.Diagnostics.Debugger.Break();
-#endif
-                }
-            }
-
-            _disposed = true;
-        }
-
-        
-
-        public void Close()
+        public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        #endregion
-
-        #region ILockBytes
-
-        public void ReadAt(ulong offset, byte[] pv, int cb, out int pcbRead)
+        protected virtual void Dispose(bool disposing)
         {
-            unsafe
+            if (disposing && (_stream != null))
             {
-                _stream.Seek((checked((long)offset)), SeekOrigin.Begin);
+                _stream = null;
             }
+        }
 
+        void ILockBytes.ReadAt(
+            ulong offset,
+            [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 2)]
+            [Out]
+            byte[] pv,
+            int cb,
+            out int pcbRead)
+        {
+            ThrowIfDisposed();
+            checked { _stream.Seek((long)offset, SeekOrigin.Begin); }
             pcbRead = _stream.Read(pv, 0, cb);
         }
 
-        public void WriteAt(ulong offset, byte[] pv, int cb, out int pcbWritten)
+        void ILockBytes.WriteAt(ulong offset, byte[] pv, int cb, out int pcbWritten)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void Flush()
+        void ILockBytes.Flush()
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void SetSize(ulong cb)
+        void ILockBytes.SetSize(ulong cb)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void LockRegion(ulong libOffset, ulong cb, int dwLockType)
+        void ILockBytes.LockRegion(ulong libOffset, ulong cb, int dwLockType)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void UnlockRegion(ulong libOffset, ulong cb, int dwLockType)
+        void ILockBytes.UnlockRegion(ulong libOffset, ulong cb, int dwLockType)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void Stat(out System.Runtime.InteropServices.ComTypes.STATSTG pstatstg, int grfStatFlag)
+        void ILockBytes.Stat(out System.Runtime.InteropServices.ComTypes.STATSTG pstatstg, int grfStatFlag)
         {
-            pstatstg = _statstg;
+            ThrowIfDisposed();
+
+            pstatstg = new System.Runtime.InteropServices.ComTypes.STATSTG()
+            {
+                grfLocksSupported = 0, // No lock supported
+                cbSize = _stream.Length,
+                type = (int)STGTY.LOCKBYTES
+            };
         }
 
-        #endregion
+        private void ThrowIfDisposed()
+        {
+            if (_stream == null)
+            {
+                throw new ObjectDisposedException(null);
+            }
+        }
     }
 }

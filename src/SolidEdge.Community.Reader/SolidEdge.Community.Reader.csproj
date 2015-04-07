@@ -76,6 +76,7 @@
     <Compile Include="Native\PropertySet.cs" />
     <Compile Include="Native\PropertySets.cs" />
     <Compile Include="Native\ReadOnlyILockBytes.cs" />
+    <Compile Include="Native\ReadOnlyIStorage.cs" />
     <Compile Include="Native\Structures.cs" />
     <Compile Include="Part\PartDocument.cs" />
     <Compile Include="Part\SheetMetalDocument.cs" />
