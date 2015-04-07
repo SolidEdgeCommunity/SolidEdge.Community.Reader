@@ -8,6 +8,7 @@
         <owners>Jason Newell</owners>
         <licenseUrl>https://github.com/SolidEdgeCommunity/SolidEdge.Community.Reader/blob/master/LICENSE.md</licenseUrl>
         <projectUrl>https://github.com/SolidEdgeCommunity/SolidEdge.Community.Reader</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/SolidEdgeCommunity/SolidEdge.Community.Reader/master/media/icon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Community provided assembly for reading Solid Edge files.</description>
         <summary>Community provided assembly for reading Solid Edge files.</summary>
