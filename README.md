@@ -1,7 +1,10 @@
 SolidEdge.Community.Reader
 ================
 
-Library for reading Solid Edge files
+### Latest Releases
+|Library           |Version           |Downloads         |
+|:-----------------|:-----------------|:-----------------|
+|**SolidEdge.Community.Reader**|[![Nuget count](http://img.shields.io/nuget/v/SolidEdge.Community.Reader.svg)](https://www.nuget.org/packages/SolidEdge.Community.Reader/)|[![Nuget downloads](http://img.shields.io/nuget/dt/SolidEdge.Community.Reader.svg)](https://www.nuget.org/packages/SolidEdge.Community.Reader/)|
 
 ## [SolidEdge.Community.Reader NuGet Package](https://www.nuget.org/packages/SolidEdge.Community.Reader)
 
