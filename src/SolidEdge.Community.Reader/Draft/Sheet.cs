@@ -106,6 +106,18 @@ namespace SolidEdgeCommunity.Reader.Draft
         }
 
         /// <summary>
+        /// Returns a byte array containing the EMF data.
+        /// </summary>
+        /// <returns></returns>
+        public byte[] GetMetafileBytes()
+        {
+            using (MemoryStream emfMemoryStream = _draftFile.GetEmfMemoryStream(this))
+            {
+                return emfMemoryStream.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Writes the EMF bytes directly to a file.
         /// </summary>
         /// <param name="path"></param>
