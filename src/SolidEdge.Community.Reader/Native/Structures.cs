@@ -276,7 +276,7 @@ namespace SolidEdgeCommunity.Reader.Native
             }
             else if (IntPtr.Size == 8)
             {
-                BitConverter.GetBytes(p2).CopyTo(ret, IntPtr.Size);
+                BitConverter.GetBytes(p.ToInt64()).CopyTo(ret, 0);
             }
 
             return ret;

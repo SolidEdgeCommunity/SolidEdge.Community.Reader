@@ -2,18 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SolidEdge.Community.Reader</id>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
         <title>SolidEdge.Community.Reader</title>
         <authors>Jason Newell</authors>
         <owners>Jason Newell</owners>
         <licenseUrl>https://github.com/SolidEdgeCommunity/SolidEdge.Community.Reader/blob/master/LICENSE.md</licenseUrl>
         <projectUrl>https://github.com/SolidEdgeCommunity/SolidEdge.Community.Reader</projectUrl>
-		<iconUrl>https://raw.githubusercontent.com/SolidEdgeCommunity/SolidEdge.Community.Reader/master/media/icon.png</iconUrl>
+        <iconUrl>https://raw.githubusercontent.com/SolidEdgeCommunity/SolidEdge.Community.Reader/master/media/icon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Community provided assembly for reading Solid Edge files.</description>
         <summary>Community provided assembly for reading Solid Edge files.</summary>
-        <releaseNotes>Added Sheet.GetMetafileBytes().</releaseNotes>
+        <releaseNotes>Fixed an issue with float\double values.</releaseNotes>
         <language>en-US</language>
         <tags>interop solidedge community contrib reader</tags>
     </metadata>
+    <files>
+        <file src="lib\net40\SolidEdge.Community.Reader.dll" target="lib\net40\SolidEdge.Community.Reader.dll" />
+        <file src="lib\net40\SolidEdge.Community.Reader.xml" target="lib\net40\SolidEdge.Community.Reader.xml" />
+    </files>
 </package>

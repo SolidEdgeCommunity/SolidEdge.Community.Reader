@@ -28,14 +28,19 @@ namespace QA
 
         static void Main(string[] args)
         {
-            var filename = @"C:\Users\jason_001\Desktop\Part1.par";
+            var filename = @"C:\Users\Jason\Desktop\Part1.par";
 
             var document = SolidEdgeCommunity.Reader.SolidEdgeDocument.Open(filename);
-            using (var bitmap = document.GetThumbnail())
+            var propertySets = document.PropertySets;
+
+            foreach (var propertySet in propertySets)
             {
-                filename = System.IO.Path.ChangeExtension(filename, "_(SolidEdgeCommunity).bmp");
-                bitmap.Save(filename, System.Drawing.Imaging.ImageFormat.Bmp);
+                foreach (var property in propertySet)
+                {
+                    Console.WriteLine("{0} | {1} |  {2} |  {3}", property.PropertyId, property.Name, property.Value, property.VariantType);
+                }
             }
+
             document.Close();
 
             //TimeSpan elapsedTime = new TimeSpan();
