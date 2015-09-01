@@ -32,5 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.8.0.0")]
-[assembly: AssemblyFileVersion("1.8.0.0")]
+
+// ONLY INCREMENT THIS VALUE ON MAJOR RELEASES!
+[assembly: AssemblyVersion("2.0.0.0")]
+
+// This version should match the NuGet version.
+[assembly: AssemblyFileVersion("2.0.0.0")]

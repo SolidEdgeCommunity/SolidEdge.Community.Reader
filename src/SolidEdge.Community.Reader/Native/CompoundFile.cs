@@ -92,7 +92,9 @@ namespace SolidEdgeCommunity.Reader.Native
         internal static IStorage OpenStorage(string path)
         {
             IStorage storage = null;
-            uint grfMode = (uint)(STGM.DIRECT | STGM.READ | STGM.SHARE_DENY_WRITE);
+            //uint grfMode = (uint)(STGM.DIRECT | STGM.READ | STGM.SHARE_DENY_WRITE); // Old
+            uint grfMode = (uint)(STGM.READ | STGM.TRANSACTED | STGM.SHARE_DENY_NONE);
+
             uint stgfmt = (uint)STGFMT.DOCFILE; //Indicates that the file must be a compound file.
             Guid iid = IID.IID_IStorage;
             

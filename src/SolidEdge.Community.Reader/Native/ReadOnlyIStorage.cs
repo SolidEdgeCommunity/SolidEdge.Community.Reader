@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SolidEdgeCommunity.Reader.Native
 {
-    internal class ReadOnlyIStorage : IStorage, IDisposable
+    internal class ReadOnlyIStorage : IStorage, IPropertySetStorage, IDisposable
     {
         private IStorage _storage;
         private ReadOnlyILockBytes _readOnlyILockBytes;
@@ -54,6 +54,8 @@ namespace SolidEdgeCommunity.Reader.Native
                 _readOnlyILockBytes = null;
             }
         }
+
+        #region IStorage
 
         int IStorage.CreateStream(string pwcsName, uint grfMode, uint reserved1, uint reserved2, out System.Runtime.InteropServices.ComTypes.IStream ppstm)
         {
@@ -129,5 +131,31 @@ namespace SolidEdgeCommunity.Reader.Native
         {
             return _storage.Stat(out pstatstg, grfStatFlag);
         }
+
+        #endregion
+
+        #region IPropertySetStorage
+
+        int IPropertySetStorage.Create(ref Guid rfmtid, ref Guid pClsid, uint grfFlags, uint grfMode, out IPropertyStorage ppprstg)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IPropertySetStorage.Open(ref Guid rfmtid, uint grfMode, out IPropertyStorage ppprstg)
+        {
+            return ((IPropertySetStorage)_storage).Open(rfmtid, grfMode, out ppprstg);
+        }
+
+        int IPropertySetStorage.Delete(ref Guid rfmtid)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IPropertySetStorage.Enum(out IEnumSTATPROPSETSTG ppEnum)
+        {
+            return ((IPropertySetStorage)_storage).Enum(out ppEnum);
+        }
+
+        #endregion
     }
 }

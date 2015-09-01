@@ -28,20 +28,30 @@ namespace QA
 
         static void Main(string[] args)
         {
-            var filename = @"C:\Users\Jason\Desktop\Part1.par";
+            var filename = @"C:\Users\jason\Desktop\bolt1.par";
 
-            var document = SolidEdgeCommunity.Reader.SolidEdgeDocument.Open(filename);
-            var propertySets = document.PropertySets;
-
-            foreach (var propertySet in propertySets)
+            using (var fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                foreach (var property in propertySet)
+                var document = SolidEdgeCommunity.Reader.SolidEdgeDocument.Open(fs);
+                var propertySets = document.PropertySets;
+
+                foreach (var propertySet in propertySets)
                 {
-                    Console.WriteLine("{0} | {1} |  {2} |  {3}", property.PropertyId, property.Name, property.Value, property.VariantType);
+                    foreach (var property in propertySet)
+                    {
+                        Console.WriteLine("{0} | {1} |  {2} |  {3}", property.PropertyId, property.Name, property.Value, property.VariantType);
+                    }
                 }
+
+                document.Close();
             }
 
-            document.Close();
+            //var document = SolidEdgeCommunity.Reader.SolidEdgeDocument.Open(filename);
+            //var propertySets = document.PropertySets;
+
+
+
+            //document.Close();
 
             //TimeSpan elapsedTime = new TimeSpan();
 
